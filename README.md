@@ -22,8 +22,7 @@ O projeto utiliza o PostgreSQL como banco de dados. Para configurar a conexão c
 
 Para executar o projeto, siga os seguintes passos:
 
-# Clone o repositório
-
+- Clone o repositório
 - Instale as dependências utilizando o comando npm install
 - Defina a variável de ambiente DATABASE_URL com a URL do banco de dados
 - Execute o comando npx prisma migrate dev para criar as tabelas no banco de dados
