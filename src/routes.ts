@@ -5,28 +5,26 @@ import { CreateClienteController } from "./modules/clients/useCases/createClient
 import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 import { CreateDeliveryController } from "./modules/deliveries/useCases/createDelivery/CreateDeliveryController";
 import { ensureAuthenticateClient } from "./middlewares/ensureAuthenticateClient";
-<<<<<<< HEAD
 import { FindAllAvailabreController } from "./modules/deliveries/useCases/findAllAvailable/FindAllAvailableController";
 import { ensureAuthenticateDeliveryman } from "./middlewares/ensureAuthenticateDeliveryman";
-=======
->>>>>>> 0109284ac96d6e05e35627c3fda2cdbdf16af4cb
+import { UpdateDeliverymanController } from "./modules/deliveries/useCases/updateDeliveryman/useCases/UpdateDeliverymanController";
+import { FindAllDeliveriesController } from "./modules/clients/useCases/deliveries/FindAllDeliveriesController";
 
 
 const routes = Router()
 
-const createClienteController = new CreateClienteController
-const authenticateClientController = new AuthenticateClientController
-const createDeliverymanController = new CreateDeliverymanController
-const authenticateDeliverymanController = new AuthenticateDeliverymanController
-const createDeliveryController = new CreateDeliveryController
-<<<<<<< HEAD
-const findAllAvailabreController = new FindAllAvailabreController
-
-=======
->>>>>>> 0109284ac96d6e05e35627c3fda2cdbdf16af4cb
+const createClienteController = new CreateClienteController()
+const authenticateClientController = new AuthenticateClientController()
+const createDeliverymanController = new CreateDeliverymanController()
+const authenticateDeliverymanController = new AuthenticateDeliverymanController()
+const createDeliveryController = new CreateDeliveryController()
+const findAllAvailabreController = new FindAllAvailabreController()
+const updateDeliverymanController = new UpdateDeliverymanController()
+const findAllDeliveriesClient = new FindAllDeliveriesController()
 
 //routes client
 routes.post("/client/", createClienteController.handle)
+routes.get("/client/deliveries/", ensureAuthenticateClient, findAllDeliveriesClient.handle)
 
 //routes authenticate
 routes.post("/client/authenticate/", authenticateClientController.handle)
@@ -34,15 +32,10 @@ routes.post("/deliveryman/authenticate/", authenticateDeliverymanController.hand
 
 //routes deliveryman
 routes.post("/deliveryman/", createDeliverymanController.handle)
-<<<<<<< HEAD
-=======
-
-//router delivery
-routes.post("/delivery/", ensureAuthenticateClient, createDeliveryController.handle)
->>>>>>> 0109284ac96d6e05e35627c3fda2cdbdf16af4cb
 
 //router delivery
 routes.post("/delivery/", ensureAuthenticateClient, createDeliveryController.handle)
 routes.get("/delivery/available", ensureAuthenticateDeliveryman, findAllAvailabreController.handle)
+routes.put("/delivery/updateDeliveryman/:id", ensureAuthenticateDeliveryman, updateDeliverymanController.handle)
 
 export {routes}

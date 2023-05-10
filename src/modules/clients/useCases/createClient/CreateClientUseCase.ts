@@ -14,6 +14,7 @@ export class CreateClientUseCase {
         const clientExit = await prisma.clients.findFirst({
             where: {
                 username: {
+                    equals: username,
                     mode: "insensitive" //ignora se tem maiúcula ou minúscula
                 }
             }
