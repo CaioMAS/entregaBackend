@@ -13,7 +13,7 @@ export class UpdateDeliverymanUseCase {
                 id: id_delivery
             },
             data: {
-                id_deliveryman
+                id_deliveryman: id_deliveryman //porque nessa parte emitiu o :id_deliveryman e continuou funcionando ??
             }
         })
 
