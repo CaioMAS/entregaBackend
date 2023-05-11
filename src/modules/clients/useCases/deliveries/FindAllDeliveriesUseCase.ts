@@ -8,11 +8,11 @@ export class FindAllDeliveriesUseCase {
                 id: id_client
             },
             select: {
-               deliveries: true ,
-               id: true,
-               username: true
-            }, 
-            
+                deliveries: true,
+                id: true,
+                username: true
+            },
+
         })
 
         return deliveries

@@ -11,6 +11,9 @@ import { UpdateDeliverymanController } from "./modules/deliveries/useCases/updat
 import { FindAllDeliveriesController } from "./modules/clients/useCases/deliveries/FindAllDeliveriesController";
 import { FindAllDeliveriesDeliverymanController } from "./modules/deliveryman/useCases/findAllDeliveries/FindAllDeliveriesDeliverymanController";
 import { UpdateEndDateController } from "./modules/deliveries/useCases/updateEndData/UpdateEndDateController";
+import { FindAllClientsController } from "./modules/admins/useCases/findAllCliets/FindAllClientsController";
+import { FindAllDeliverymanController } from "./modules/admins/useCases/findAllDeliveryman/FindAllDeliverymanController";
+import { DeleteClientController } from "./modules/admins/useCases/deleteClient/DeleteClientController";
 
 
 const routes = Router()
@@ -25,7 +28,15 @@ const updateDeliverymanController = new UpdateDeliverymanController()
 const findAllDeliveriesClient = new FindAllDeliveriesController()
 const findAllDeliveriesDeliveryman = new FindAllDeliveriesDeliverymanController()
 const updateEndDateController = new UpdateEndDateController()
+const findAllClietsControler = new FindAllClientsController()
+const findAllDeliverymController = new FindAllDeliverymanController()
+const deleteClientController = new DeleteClientController()
 
+
+// admin routes
+routes.get("/clients/", findAllClietsControler.handle) // find clientes cadastrados
+routes.get("/deliverymans/", findAllDeliverymController.handle) // find deliverymans
+routes.delete("/client/:id", deleteClientController.handle) // delete client
 
 //routes client
 routes.post("/client/", createClienteController.handle)
