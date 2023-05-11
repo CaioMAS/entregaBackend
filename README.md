@@ -6,7 +6,7 @@ Esse é um repositório de exemplo para um projeto de gerenciamento de entregas 
 
 - Prisma ORM
 - PostgreSQL
-- Node + SOLID
+- Node 
 - Express
 
 ## O projeto segue a seguinte arquitetura:
