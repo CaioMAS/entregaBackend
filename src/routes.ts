@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AuthenticateClientController } from "./modules/account/authenticateClient/AuthenticateClientController";
-import { AuthenticateDeliverymanController } from "./modules/account/authneticateDeliveryman/AuthenticateDeliverymanController";
+import { AuthenticateClientController } from "./modules/account/useCases/authenticateClient/AuthenticateClientController";
+import { AuthenticateDeliverymanController } from "./modules/account/useCases/authneticateDeliveryman/AuthenticateDeliverymanController";
 import { CreateClienteController } from "./modules/clients/useCases/createClient/CreateClientController";
 import { CreateDeliverymanController } from "./modules/deliveryman/useCases/createDeliveryman/CreateDeliverymanController";
 import { CreateDeliveryController } from "./modules/deliveries/useCases/createDelivery/CreateDeliveryController";
