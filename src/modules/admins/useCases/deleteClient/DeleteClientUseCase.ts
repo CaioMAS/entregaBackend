@@ -22,6 +22,6 @@ export class DeleteClientUseCase {
       },
     })
 
-    return client
+    return (`Client ${client.username} deleted`)
   }
 }
