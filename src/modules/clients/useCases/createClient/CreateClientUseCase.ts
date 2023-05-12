@@ -2,7 +2,6 @@ import { prisma } from "../../../../database/prismaClient"
 import {hash} from "bcrypt"
 
 
-
 interface IClienteClient {
     username: string,
     password: string
