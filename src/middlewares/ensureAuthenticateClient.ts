@@ -34,3 +34,6 @@ export async function ensureAuthenticateClient(request: Request, response: Respo
         })
     }
 }
+
+
+const authenticte (key: string)
