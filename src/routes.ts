@@ -14,6 +14,8 @@ import { UpdateEndDateController } from "./modules/deliveries/useCases/updateEnd
 import { FindAllClientsController } from "./modules/admins/useCases/findAllCliets/FindAllClientsController";
 import { FindAllDeliverymanController } from "./modules/admins/useCases/findAllDeliveryman/FindAllDeliverymanController";
 import { DeleteClientController } from "./modules/admins/useCases/deleteClient/DeleteClientController";
+import { read } from "./controllers/delivery";
+import { createClient, getClient } from "./controllers/client";
 
 
 const routes = Router()
@@ -32,6 +34,8 @@ const findAllClietsControler = new FindAllClientsController()
 const findAllDeliverymController = new FindAllDeliverymanController()
 const deleteClientController = new DeleteClientController()
 
+routes.get('/client-test', getClient)
+routes.post('/client-test', createClient)
 
 // admin routes
 routes.get("/clients/", findAllClietsControler.handle) // find clientes cadastrados
@@ -40,7 +44,7 @@ routes.delete("/client/:id", deleteClientController.handle) // delete client
 
 //routes client
 routes.post("/client/", createClienteController.handle)
-routes.get("/client/deliveries/", ensureAuthenticateClient, findAllDeliveriesClient.handle) 
+routes.get("/client/deliveries/", ensureAuthenticateClient('asdfasdfsdfasdf'), findAllDeliveriesClient.handle)
 
 //routes authenticate
 routes.post("/client/authenticate/", authenticateClientController.handle)
@@ -48,12 +52,12 @@ routes.post("/deliveryman/authenticate/", authenticateDeliverymanController.hand
 
 //routes deliveryman
 routes.post("/deliveryman/", createDeliverymanController.handle)
-routes.get("/deliveryman/deliveries", ensureAuthenticateDeliveryman, findAllDeliveriesDeliveryman.handle )
-routes.put("/delivery/updateEndDate/:id", ensureAuthenticateDeliveryman, updateEndDateController.handle )
+routes.get("/deliveryman/deliveries", ensureAuthenticateDeliveryman, findAllDeliveriesDeliveryman.handle)
+routes.put("/delivery/updateEndDate/:id", ensureAuthenticateDeliveryman, updateEndDateController.handle)
 
 //router delivery
 routes.post("/delivery/", ensureAuthenticateClient, createDeliveryController.handle)
-routes.get("/delivery/available", ensureAuthenticateDeliveryman, findAllAvailabreController.handle)
+routes.get("/delivery/available", ensureAuthenticateDeliveryman(process.env.secret_key), findAllAvailabreController.handle)
 routes.put("/delivery/updateDeliveryman/:id", ensureAuthenticateDeliveryman, updateDeliverymanController.handle)
 
-export {routes}
+export { routes }
